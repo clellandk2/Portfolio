@@ -67,7 +67,7 @@ def powerSet(mults):
 
 
 def findCombos(p, banned, maxNum):   
-    """ This function takes a prime number p (from the primes list in main) and ultimtaely returns all possible combinations of its multiples 
+    """ This function takes a prime number p (from the primes list in main) and ultimately returns all possible combinations of its multiples 
     that satisfy the inclusion criteria. #p is the prime, banned is a list of three numbers which can be excluded for reasons given in main. """ 
     
     mults = []  
@@ -233,3 +233,4 @@ if __name__ == "__main__":
     main(80, False)
     #main(45, True) 
     
+
