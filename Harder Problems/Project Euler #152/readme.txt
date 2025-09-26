@@ -1,10 +1,35 @@
-The code in this directory solves Project Euler problem #152 ("Sums of Square Reciprocals"). 
+# Project Euler #152 – "Sums of Square Reciprocals"
 
-It can be executed by typing "python Problem152.py" at the command line, which will solve the n = 80 formulation of the problem, or by using the test file, which solves both the given example (n=45) and the actual problem (n=80). 
-Commands for this are either 
-1) "python test_file.py"    OR
-2) "pytest test_file.py" 
+This directory contains a Python solution to Project Euler problem #152.  
+By default, the code solves the **n = 80** formulation, but n can easily be changed either via the **Click CLI** or by modifying the pytest file.  
+On my laptop, the runtime for n=80 is approximately **2 seconds**.
 
+> Note: For n > 81, additional primes larger than 37 would need to be added manually to the main script.  
+> Also, the runtime grows exponentially with n, so proceed with caution. The code does **not** implement a sieve of Eratosthenes for generating primes automatically.
 
+---
 
-(describe the algorithm here) 
+## Usage
+
+Run the program using the CLI with **Click**. There are two parameters:
+
+- `--n` or `-n` : maximum denominator value (before squaring).  
+- `--print-solutions` / `--no-print-solutions` : if true, prints all valid solutions in addition to the total count.
+
+**Example:**
+
+```bash
+python cli.py --n 45 --print-solutions
+python cli.py -n 80
+
+## Testing
+
+A pytest file is included to verify correctness:
+
+Checks the example case n=45
+Checks the known solution for n=80
+
+Run tests via:
+python test_problem152.py
+# or if pytest is installed
+pytest test_problem152.py
