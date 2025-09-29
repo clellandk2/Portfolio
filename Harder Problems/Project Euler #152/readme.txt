@@ -26,8 +26,9 @@ python cli.py -n 80
 
 A pytest file is included to verify correctness:
 
-Checks the example case n=45
+Checks the example cases n = 35 and n=45
 Checks the known solution for n=80
+Checks that no solutions are found for n = 20
 
 Run tests via:
 python test_problem152.py
