@@ -1,0 +1,24 @@
+#Let's look at the search space for a. a<b<c, so the smallest choice for b is (a + 1). If b = a + 1, then a^2 + a^2 < a^2 + b^2 = c^2, so c > 1.414 * a. 
+#So (a + b + c) is at least (a + (a + 1) + (1.414 * a)) = 3.414 * a + 1, and we know it has to equal 1000. If a > 292, this is necessarily false, so that's our search space for a. 
+
+#Now, consider c. c>b>a, so if c < 335, the condition a + b + c cannot be satisfied. 
+#Additionally, if c > 500, the problem trivially cannot be solved, so 334 < c < 500. 
+
+#Lastly, since c is at least 335, and b < c we know c^2 - b^2 will be at least 669 (335^2 - 334^2), since the square numbers get sparser as they get bigger. 
+#This means a^2 > 668, so a > 25. 
+
+#If anyone's reading this, this is just a pretty quick refinement that I think will be enough, not a particularly rigorous one. 
+
+import numpy as np
+
+def main():
+    for a in range(26,293):
+        for c in range(335,500):
+            b = np.sqrt(c**2 - a**2)
+            sum = a + b + c
+            if (sum > 999.999):
+                if (sum < 1000.001):
+                    print(a,b,c)
+                    print(a*b*c)
+
+main()

@@ -1,0 +1,1 @@
+These are some example python codes I've written. The multiphonon code was written as part of my PhD research. The other projects are sample code I've written for Project Euler: https://projecteuler.net/.  

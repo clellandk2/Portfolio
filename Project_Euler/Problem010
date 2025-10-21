@@ -1,0 +1,34 @@
+def main():
+    count = 0
+    nums = []
+    sum = 28
+    i = 3
+    while (i < 2000000): 
+        if (i%3 != 0):
+            if (i%5 != 0):
+                if (i%7 != 0):
+                    if (i%11 != 0):
+                        nums.append(i)
+        i+=2
+    while (len(nums) > 0):
+        prime = nums.pop(0)
+        sum += prime
+        if (prime > 1420):
+            break
+        i = 0
+        count += 1
+        if (count > 100):
+            print("Prime:", prime)
+            count = 0
+        while (i < len(nums)): 
+            n = nums[i]
+            if (n%prime == 0):
+                nums.pop(i)
+            i += 1
+    for j in nums:
+        sum += j
+    
+    print("Sum:", sum)
+
+
+main()
