@@ -8,64 +8,41 @@ Given the wide range in coding experience of ORNL users, I wrote this code **pri
 To adapt to other indirect geometry instruments, modify the line "E1 = 3.6" in the getW function with the appropriate final collection energy (in meV). If Q dependence is explicitly recorded by the instrument, there are better ways to do this calculation.
 
 
-
-\### Notes about Input Files
-
-
-
-\- \*\*File Formatting:\*\*
+## Usage
+The code can be run as a normal python script or as a pip package. 
+Once installed, the command line syntax **"sample 100 stoich"** is setup with an entry point equivalent to running  
+**python VISION_Multiphonon_Correction.py 100 Stoich**
 
 
+## Notes about Input Files
 
-&nbsp; This code assumes that VISION data has been exported from \*\*MANTID\*\* via the SaveAscii algorithm. It is currently hard-coded to read only from \*\*VISION's spectrum 2\*\* (the Q-averaged spectrum).
+### File Formatting
 
+This code assumes that VISION data has been exported from **MANTID** via the SaveAscii algorithm. It is currently hard-coded to read only from **VISION's spectrum 2** (the Q-averaged spectrum).
 
-
-&nbsp; Rewriting the scrapexy function to read other formats should work, but you should probably just use getDOS if it's a direct geometry instrument where you have Q data.
-
-
-
-\- \*\*Input Files:\*\*
+Rewriting the scrapexy function to read other formats should work, but you should probably just use getDOS if it's a direct geometry instrument where you have Q data.
 
 
+### Input Files
 
-&nbsp; Files are specified by:
+Files are specified by:
+ - tempArray (temperature array, integer values)
+ - type (experiment descriptor)
+ which are given as command line arguments. These are implemened with argparse so use the -h option for more details. Below is an example:
 
+python VISION_Multiphonon_Correction.py 100 200 300 Stoich
 
+Temperature values from tempArray are also used in calculations and should ideally be precise to ~1 K. Files must be named:
 
-&nbsp; - tempArray (temperature array)
+(temp)(type)SQE.txt
 
-&nbsp; - type (experiment descriptor)
-
-
-
-&nbsp; which are given as command line arguments.
-
-
-
-&nbsp; Temperature values are also used in calculations and should ideally be precise to ~1 K. Files must be named:
+The code does **not** include error checking or graceful handling, because a temperature typo could lead to incorrect analysis and should be quickly noticed ("fail loudly").
 
 
+## Output 
 
-&nbsp; (temp)(type)SQE.txt
+The code produces a number of graphs which are useful for various scientific purposes I won't get into here. The graphs are not displayed, but saved as .png files in the Example_Data directory. 
 
-
-
-&nbsp; The code does \*\*not\*\* include error checking or graceful handling, because a temperature typo could lead to incorrect analysis and should be quickly noticed ("fail loudly").
-
-
-
-\- \*\*Command-line Arguments:\*\*
-
-
-
-&nbsp; tempArray and type are passed in via command-line arguments. Example:
-
-
-
-&nbsp; ```bash
-
-&nbsp; python VISION\_Multiphonon\_Correction.py 100 200 300 Stoich
 
 
 
